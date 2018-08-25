@@ -1,29 +1,33 @@
 version: "3.2"
 
 services:
-  influxdb:
-    build: influxdb
-    env_file: configuration.env
-    ports:
-      - "8086:8086"
-    volumes:
-      - influxdb_data:/var/lib/influxdb
-  grafana:
-    build: grafana
-    env_file: configuration.env
-    links:
-      - influxdb
-    ports:
-      - "3000:3000"
-    user: root
-    volumes:
-      - grafana_data:/var/lib/grafana
+#  influxdb:
+#    build: influxdb
+#    env_file: configuration.env
+#    ports:
+#      - "8086:8086"
+#    volumes:
+#      - influxdb_data:/var/lib/influxdb
+#  grafana:
+#    build: grafana
+#    env_file: configuration.env
+#    links:
+#      - influxdb
+#    ports:
+#      - "3000:3000"
+#    user: root
+#    volumes:
+#      - grafana_data:/var/lib/grafana
   node-red:
     build: node-red
     env_file: configuration.env
-    links:
-      - influxdb
+#    links:
+#      - influxdb
     ports:
+      - "8883:8883"
+      - "443:443"
+      - "8443:8443"
+      - "80:80"
       - "1880:1880"
     volumes:
       - node-red_data:/var/lib/node-red
