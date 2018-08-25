@@ -31,8 +31,12 @@ services:
       - "1880:1880"
     volumes:
       - node-red_data:/var/lib/node-red
+      - cfg:/usr/lib/cfg
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
 
 volumes:
   grafana_data: {}
   influxdb_data: {}
   node-red_data: {}
+  cfg:
